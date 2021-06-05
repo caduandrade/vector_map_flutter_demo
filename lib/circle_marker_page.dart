@@ -31,85 +31,64 @@ class CircleMarkerPageState extends ExamplePageState {
   }
 
   Widget _default() {
-    MapTheme hoverTheme = MapTheme(color: Colors.green);
+    MapLayer polygonsLayer = MapLayer(dataSource: polygons);
 
-    MapLayer polygonsLayer =
-        MapLayer(dataSource: polygons, hoverTheme: hoverTheme);
-
-    MapLayer pointsLayer = MapLayer(
-        dataSource: points,
-        theme: MapTheme(color: Colors.black),
-        hoverTheme: hoverTheme);
+    MapLayer pointsLayer =
+        MapLayer(dataSource: points, theme: MapTheme(color: Colors.black));
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
     return map;
   }
 
   Widget _fixed() {
-    MapTheme hoverTheme = MapTheme(color: Colors.green);
-
-    MapLayer polygonsLayer =
-        MapLayer(dataSource: polygons, hoverTheme: hoverTheme);
+    MapLayer polygonsLayer = MapLayer(dataSource: polygons);
 
     MapLayer pointsLayer = MapLayer(
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
-            markerBuilder: CircleMakerBuilder.fixed(radius: 15)),
-        hoverTheme: hoverTheme);
+            markerBuilder: CircleMakerBuilder.fixed(radius: 15)));
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
     return map;
   }
 
   Widget _map() {
-    MapTheme hoverTheme = MapTheme(color: Colors.green);
-
-    MapLayer polygonsLayer =
-        MapLayer(dataSource: polygons, hoverTheme: hoverTheme);
+    MapLayer polygonsLayer = MapLayer(dataSource: polygons);
 
     MapLayer pointsLayer = MapLayer(
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
             markerBuilder: CircleMakerBuilder.map(
-                key: 'AN', radiuses: {41: 25, 22: 20, 14: 10, 10: 10})),
-        hoverTheme: hoverTheme);
+                key: 'AN', radiuses: {41: 25, 22: 20, 14: 10, 10: 10})));
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
     return map;
   }
 
   Widget _property() {
-    MapTheme hoverTheme = MapTheme(color: Colors.green);
-
-    MapLayer polygonsLayer =
-        MapLayer(dataSource: polygons, hoverTheme: hoverTheme);
+    MapLayer polygonsLayer = MapLayer(dataSource: polygons);
 
     MapLayer pointsLayer = MapLayer(
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
-            markerBuilder: CircleMakerBuilder.property(key: 'AN')),
-        hoverTheme: hoverTheme);
+            markerBuilder: CircleMakerBuilder.property(key: 'AN')));
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
     return map;
   }
 
   Widget _proportion() {
-    MapTheme hoverTheme = MapTheme(color: Colors.green);
-
-    MapLayer polygonsLayer =
-        MapLayer(dataSource: polygons, hoverTheme: hoverTheme);
+    MapLayer polygonsLayer = MapLayer(dataSource: polygons);
 
     MapLayer pointsLayer = MapLayer(
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
             markerBuilder: CircleMakerBuilder.proportion(
-                key: 'AN', minRadius: 4, maxRadius: 20)),
-        hoverTheme: hoverTheme);
+                key: 'AN', minRadius: 4, maxRadius: 20)));
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
     return map;
