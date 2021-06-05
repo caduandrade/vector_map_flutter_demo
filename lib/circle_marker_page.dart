@@ -14,8 +14,8 @@ class CircleMarkerPageState extends ExamplePageState {
   Future<DataSources> loadDataSources() async {
     MapDataSource polygons =
         await MapDataSource.geoJSON(geojson: polygonsGeoJSON);
-    MapDataSource points =
-        await MapDataSource.geoJSON(geojson: pointsGeoJSON, keys: ['AN']);
+    MapDataSource points = await MapDataSource.geoJSON(
+        geojson: pointsGeoJSON, keys: ['AN'], labelKey: 'AN');
     return DataSources(polygons: polygons, points: points);
   }
 
@@ -60,6 +60,7 @@ class CircleMarkerPageState extends ExamplePageState {
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
+            labelVisibility: (feature) => true,
             markerBuilder: CircleMakerBuilder.map(
                 key: 'AN', radiuses: {41: 25, 22: 20, 14: 10, 10: 10})));
 
@@ -74,6 +75,7 @@ class CircleMarkerPageState extends ExamplePageState {
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
+            labelVisibility: (feature) => true,
             markerBuilder: CircleMakerBuilder.property(key: 'AN')));
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
@@ -87,8 +89,9 @@ class CircleMarkerPageState extends ExamplePageState {
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
+            labelVisibility: (feature) => true,
             markerBuilder: CircleMakerBuilder.proportion(
-                key: 'AN', minRadius: 4, maxRadius: 20)));
+                key: 'AN', minRadius: 8, maxRadius: 30)));
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
     return map;
