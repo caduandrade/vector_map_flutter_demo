@@ -7,12 +7,19 @@ import 'menu.dart';
 
 class DataSources {
   DataSources(
-      {this.polygons, this.points, this.brazilStates, this.brazilCounties});
+      {this.polygons,
+      this.points,
+      this.brazilStates,
+      this.brazilCounties,
+      this.world,
+      this.worldMarkers});
 
   final MapDataSource? polygons;
   final MapDataSource? points;
   final MapDataSource? brazilStates;
   final MapDataSource? brazilCounties;
+  final MapDataSource? world;
+  final MapDataSource? worldMarkers;
 }
 
 abstract class ExamplePageState extends State<StatefulWidget> {
@@ -28,6 +35,8 @@ abstract class ExamplePageState extends State<StatefulWidget> {
   late String pointsGeoJSON;
   late String brazilCountiesGeoJSON;
   late String brazilStatesGeoJSON;
+  late String worldGeoJSON;
+  late String worldMarkersGeoJSON;
 
   DataSources? _dataSources;
 
@@ -50,6 +59,8 @@ abstract class ExamplePageState extends State<StatefulWidget> {
       this.pointsGeoJSON = state.pointsGeoJSON!;
       this.brazilCountiesGeoJSON = state.brazilCountiesGeoJSON!;
       this.brazilStatesGeoJSON = state.brazilStatesGeoJSON!;
+      this.worldGeoJSON = state.worldGeoJSON!;
+      this.worldMarkersGeoJSON = state.worldMarkersGeoJSON!;
       loadDataSources().then((value) {
         setState(() {
           _dataSources = value;
@@ -166,6 +177,14 @@ abstract class ExamplePageState extends State<StatefulWidget> {
 
   MapDataSource get brazilStates {
     return _dataSources!.brazilStates!;
+  }
+
+  MapDataSource get world {
+    return _dataSources!.world!;
+  }
+
+  MapDataSource get worldMarkers {
+    return _dataSources!.worldMarkers!;
   }
 
   Widget buildContent() {

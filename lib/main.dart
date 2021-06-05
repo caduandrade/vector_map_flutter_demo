@@ -20,6 +20,7 @@ import 'package:vector_map_demo/label_page.dart';
 import 'package:vector_map_demo/menu.dart';
 import 'package:vector_map_demo/multi_layer_page.dart';
 import 'package:vector_map_demo/parser_page.dart';
+import 'package:vector_map_demo/world_page.dart';
 
 void main() {
   runApp(VectorMapDemoApp());
@@ -51,6 +52,8 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
   String? pointsGeoJSON;
   String? brazilCountiesGeoJSON;
   String? brazilStatesGeoJSON;
+  String? worldGeoJSON;
+  String? worldMarkersGeoJSON;
 
   @override
   void initState() {
@@ -58,6 +61,7 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
     _menuItems = [
       MenuItem('Brazil states', _brazilStatesPage),
       MenuItem('Brazil counties', _brazilCountiesPage),
+      MenuItem('World', _worldPage),
       MenuItem('Get Started', _getStartedPage),
       MenuItem('Default colors', _defaultColorsPage),
       MenuItem('Color by value', _colorByValuePage),
@@ -96,6 +100,16 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
     rootBundle.loadString('assets/brazil_states.json').then((json) {
       setState(() {
         brazilStatesGeoJSON = json;
+      });
+    });
+    rootBundle.loadString('assets/world.json').then((json) {
+      setState(() {
+        worldGeoJSON = json;
+      });
+    });
+    rootBundle.loadString('assets/world_markers.json').then((json) {
+      setState(() {
+        worldMarkersGeoJSON = json;
       });
     });
   }
@@ -137,7 +151,9 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
     if (polygonsGeoJSON == null ||
         pointsGeoJSON == null ||
         brazilStatesGeoJSON == null ||
-        brazilCountiesGeoJSON == null) {
+        brazilCountiesGeoJSON == null ||
+        worldGeoJSON == null ||
+        worldMarkersGeoJSON == null) {
       body = Center(child: Text('Loading...'));
     } else {
       Widget exampleMenu = Container(
@@ -236,5 +252,9 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
 
   BrazilCountiesPage _brazilCountiesPage() {
     return BrazilCountiesPage();
+  }
+
+  WorldPage _worldPage() {
+    return WorldPage();
   }
 }
