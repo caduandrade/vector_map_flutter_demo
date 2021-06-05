@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vector_map_demo/brazil_counties_page.dart';
 import 'package:vector_map_demo/brazil_states_page.dart';
+import 'package:vector_map_demo/circle_marker_page.dart';
 import 'package:vector_map_demo/click_listener_page.dart';
 import 'package:vector_map_demo/color_by_rule_page.dart';
 import 'package:vector_map_demo/color_by_value_page.dart';
@@ -15,7 +17,6 @@ import 'package:vector_map_demo/gradient_page.dart';
 import 'package:vector_map_demo/hover_layer_page.dart';
 import 'package:vector_map_demo/hover_page.dart';
 import 'package:vector_map_demo/label_page.dart';
-import 'package:vector_map_demo/marker_page.dart';
 import 'package:vector_map_demo/menu.dart';
 import 'package:vector_map_demo/multi_layer_page.dart';
 import 'package:vector_map_demo/parser_page.dart';
@@ -56,6 +57,7 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
     super.initState();
     _menuItems = [
       MenuItem('Brazil states', _brazilStatesPage),
+      MenuItem('Brazil counties', _brazilCountiesPage),
       MenuItem('Get Started', _getStartedPage),
       MenuItem('Default colors', _defaultColorsPage),
       MenuItem('Color by value', _colorByValuePage),
@@ -69,7 +71,7 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
       MenuItem('Label', _labelPage),
       MenuItem('Multi layer', _multiLayerPage),
       MenuItem('Hover layer', _hoverLayerPage),
-      MenuItem('Marker', _markerPage)
+      MenuItem('Circle marker', _circleMarkerPage)
     ];
     if (_menuItems.isNotEmpty) {
       _currentExampleBuilder = _menuItems.first.builder;
@@ -224,11 +226,15 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
     return HoverLayerPage();
   }
 
-  MarkerPage _markerPage() {
-    return MarkerPage();
+  CircleMarkerPage _circleMarkerPage() {
+    return CircleMarkerPage();
   }
 
   BrazilStatesPage _brazilStatesPage() {
     return BrazilStatesPage();
+  }
+
+  BrazilCountiesPage _brazilCountiesPage() {
+    return BrazilCountiesPage();
   }
 }

@@ -4,12 +4,12 @@ import 'package:vector_map_demo/menu.dart';
 
 import 'example_page.dart';
 
-class MarkerPage extends StatefulWidget {
+class CircleMarkerPage extends StatefulWidget {
   @override
-  MarkerPageState createState() => MarkerPageState();
+  CircleMarkerPageState createState() => CircleMarkerPageState();
 }
 
-class MarkerPageState extends ExamplePageState {
+class CircleMarkerPageState extends ExamplePageState {
   @override
   Future<DataSources> loadDataSources() async {
     MapDataSource polygons =
@@ -22,14 +22,15 @@ class MarkerPageState extends ExamplePageState {
   @override
   List<MenuItem> buildMenuItems() {
     return [
-      MenuItem('Default marker', _defaultMarker),
-      MenuItem('Circle radius', _circleRadius),
-      MenuItem('Circle radius by value', _circleRadiusByValue),
-      MenuItem('Property', _property)
+      MenuItem('Default radius', _default),
+      MenuItem('Fixed radius', _fixed),
+      MenuItem('Map', _map),
+      MenuItem('Property', _property),
+      MenuItem('Proportion', _proportion)
     ];
   }
 
-  Widget _defaultMarker() {
+  Widget _default() {
     MapTheme hoverTheme = MapTheme(color: Colors.green);
 
     MapLayer polygonsLayer =
@@ -44,7 +45,7 @@ class MarkerPageState extends ExamplePageState {
     return map;
   }
 
-  Widget _circleRadius() {
+  Widget _fixed() {
     MapTheme hoverTheme = MapTheme(color: Colors.green);
 
     MapLayer polygonsLayer =
@@ -61,7 +62,7 @@ class MarkerPageState extends ExamplePageState {
     return map;
   }
 
-  Widget _circleRadiusByValue() {
+  Widget _map() {
     MapTheme hoverTheme = MapTheme(color: Colors.green);
 
     MapLayer polygonsLayer =
@@ -71,7 +72,7 @@ class MarkerPageState extends ExamplePageState {
         dataSource: points,
         theme: MapTheme(
             color: Colors.black,
-            markerBuilder: CircleMakerBuilder.mappedValues(
+            markerBuilder: CircleMakerBuilder.map(
                 key: 'AN', radiuses: {41: 25, 22: 20, 14: 10, 10: 10})),
         hoverTheme: hoverTheme);
 
@@ -90,6 +91,24 @@ class MarkerPageState extends ExamplePageState {
         theme: MapTheme(
             color: Colors.black,
             markerBuilder: CircleMakerBuilder.property(key: 'AN')),
+        hoverTheme: hoverTheme);
+
+    VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
+    return map;
+  }
+
+  Widget _proportion() {
+    MapTheme hoverTheme = MapTheme(color: Colors.green);
+
+    MapLayer polygonsLayer =
+        MapLayer(dataSource: polygons, hoverTheme: hoverTheme);
+
+    MapLayer pointsLayer = MapLayer(
+        dataSource: points,
+        theme: MapTheme(
+            color: Colors.black,
+            markerBuilder: CircleMakerBuilder.proportion(
+                key: 'AN', minRadius: 4, maxRadius: 20)),
         hoverTheme: hoverTheme);
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);

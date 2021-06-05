@@ -2,4 +2,6 @@
 
 # Vector Map Demo
 
+Demo for https://github.com/caduandrade/vector_map_flutter package.
+
  

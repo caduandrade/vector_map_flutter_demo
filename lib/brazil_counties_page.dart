@@ -3,12 +3,12 @@ import 'package:vector_map/vector_map.dart';
 
 import 'example_page.dart';
 
-class BrazilStatesPage extends StatefulWidget {
+class BrazilCountiesPage extends StatefulWidget {
   @override
-  BrazilStatesPageState createState() => BrazilStatesPageState();
+  BrazilCountiesPageState createState() => BrazilCountiesPageState();
 }
 
-class BrazilStatesPageState extends ExamplePageState {
+class BrazilCountiesPageState extends ExamplePageState {
   @override
   bool isSized() {
     return false;
@@ -17,7 +17,7 @@ class BrazilStatesPageState extends ExamplePageState {
   @override
   Future<DataSources> loadDataSources() async {
     MapDataSource brazilStates = await MapDataSource.geoJSON(
-        geojson: brazilStatesGeoJSON, keys: ['REGIAO']);
+        geojson: brazilCountiesGeoJSON, keys: ['id'], parseToNumber: ['id']);
 
     return DataSources(brazilStates: brazilStates);
   }
@@ -32,15 +32,11 @@ class BrazilStatesPageState extends ExamplePageState {
   Widget buildContent() {
     MapLayer layer = MapLayer(
         dataSource: brazilStates,
-        theme:
-            MapTheme.value(contourColor: Colors.black, key: 'REGIAO', colors: {
-          'Centro-Oeste': Colors.blue,
-          'Sudeste': Colors.green,
-          'Sul': Colors.orange,
-          'Nordeste': Colors.red,
-          'Norte': Colors.yellow
-        }),
-        hoverTheme: MapTheme(color: Colors.grey[800]));
+        theme: MapTheme.gradient(
+            contourColor: Colors.green[800],
+            key: 'id',
+            colors: [Colors.yellow, Colors.lightGreen]),
+        hoverTheme: MapTheme(color: Colors.green[900]));
 
     VectorMap map = VectorMap(debugger: debugger, layers: [layer]);
 
