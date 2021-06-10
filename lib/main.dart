@@ -17,6 +17,7 @@ import 'package:vector_map_demo/gradient_page.dart';
 import 'package:vector_map_demo/hover_layer_page.dart';
 import 'package:vector_map_demo/hover_page.dart';
 import 'package:vector_map_demo/label_page.dart';
+import 'package:vector_map_demo/lines_page.dart';
 import 'package:vector_map_demo/menu.dart';
 import 'package:vector_map_demo/multi_layer_page.dart';
 import 'package:vector_map_demo/parser_page.dart';
@@ -54,6 +55,8 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
   String? brazilStatesGeoJSON;
   String? worldGeoJSON;
   String? worldMarkersGeoJSON;
+  String? brazilLinesGeoJSON;
+  String? brazilGeoJSON;
 
   @override
   void initState() {
@@ -75,7 +78,8 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
       MenuItem('Label', _labelPage),
       MenuItem('Multi layer', _multiLayerPage),
       MenuItem('Hover layer', _hoverLayerPage),
-      MenuItem('Circle marker', _circleMarkerPage)
+      MenuItem('Circle marker', _circleMarkerPage),
+      MenuItem('Lines', _linesPage)
     ];
     if (_menuItems.isNotEmpty) {
       _currentExampleBuilder = _menuItems.first.builder;
@@ -110,6 +114,16 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
     rootBundle.loadString('assets/world_markers.json').then((json) {
       setState(() {
         worldMarkersGeoJSON = json;
+      });
+    });
+    rootBundle.loadString('assets/brazil_lines.json').then((json) {
+      setState(() {
+        brazilLinesGeoJSON = json;
+      });
+    });
+    rootBundle.loadString('assets/brazil.json').then((json) {
+      setState(() {
+        brazilGeoJSON = json;
       });
     });
   }
@@ -153,7 +167,9 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
         brazilStatesGeoJSON == null ||
         brazilCountiesGeoJSON == null ||
         worldGeoJSON == null ||
-        worldMarkersGeoJSON == null) {
+        worldMarkersGeoJSON == null ||
+        brazilGeoJSON == null ||
+        brazilLinesGeoJSON == null) {
       body = Center(child: Text('Loading...'));
     } else {
       Widget exampleMenu = Container(
@@ -256,5 +272,9 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
 
   WorldPage _worldPage() {
     return WorldPage();
+  }
+
+  LinesPage _linesPage() {
+    return LinesPage();
   }
 }

@@ -12,7 +12,9 @@ class DataSources {
       this.brazilStates,
       this.brazilCounties,
       this.world,
-      this.worldMarkers});
+      this.worldMarkers,
+      this.brazil,
+      this.brazilLines});
 
   final MapDataSource? polygons;
   final MapDataSource? points;
@@ -20,6 +22,8 @@ class DataSources {
   final MapDataSource? brazilCounties;
   final MapDataSource? world;
   final MapDataSource? worldMarkers;
+  final MapDataSource? brazil;
+  final MapDataSource? brazilLines;
 }
 
 abstract class ExamplePageState extends State<StatefulWidget> {
@@ -37,6 +41,8 @@ abstract class ExamplePageState extends State<StatefulWidget> {
   late String brazilStatesGeoJSON;
   late String worldGeoJSON;
   late String worldMarkersGeoJSON;
+  late String brazilLinesGeoJSON;
+  late String brazilGeoJSON;
 
   DataSources? _dataSources;
 
@@ -61,6 +67,8 @@ abstract class ExamplePageState extends State<StatefulWidget> {
       this.brazilStatesGeoJSON = state.brazilStatesGeoJSON!;
       this.worldGeoJSON = state.worldGeoJSON!;
       this.worldMarkersGeoJSON = state.worldMarkersGeoJSON!;
+      this.brazilGeoJSON = state.brazilGeoJSON!;
+      this.brazilLinesGeoJSON = state.brazilLinesGeoJSON!;
       loadDataSources().then((value) {
         setState(() {
           _dataSources = value;
@@ -185,6 +193,14 @@ abstract class ExamplePageState extends State<StatefulWidget> {
 
   MapDataSource get worldMarkers {
     return _dataSources!.worldMarkers!;
+  }
+
+  MapDataSource get brazil {
+    return _dataSources!.brazil!;
+  }
+
+  MapDataSource get brazilLines {
+    return _dataSources!.brazilLines!;
   }
 
   Widget buildContent() {
