@@ -32,7 +32,7 @@ class BrazilCountiesPageState extends ExamplePageState {
   Widget buildContent() {
     MapLayer layer = MapLayer(
         dataSource: brazilStates,
-        theme: MapTheme.gradient(
+        theme: MapGradientTheme(
             contourColor: Colors.green[800],
             key: 'id',
             colors: [Colors.yellow, Colors.lightGreen]),

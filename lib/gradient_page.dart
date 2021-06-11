@@ -28,7 +28,7 @@ class GradientPageState extends ExamplePageState {
   Widget _autoMinMax() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        theme: MapTheme.gradient(
+        theme: MapGradientTheme(
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
             key: 'Seq',
@@ -42,7 +42,7 @@ class GradientPageState extends ExamplePageState {
   Widget _minMax() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        theme: MapTheme.gradient(
+        theme: MapGradientTheme(
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
             key: 'Seq',

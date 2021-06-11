@@ -23,7 +23,7 @@ class ParserPageState extends ExamplePageState {
   Widget buildContent() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        theme: MapTheme.gradient(
+        theme: MapGradientTheme(
             labelVisibility: (feature) => true,
             key: 'Rnd',
             colors: [Colors.blue, Colors.red]));

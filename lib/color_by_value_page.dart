@@ -20,7 +20,7 @@ class ColorByValuePageState extends ExamplePageState {
   Widget buildContent() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        theme: MapTheme.value(
+        theme: MapValueTheme(
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
             key: 'Seq',

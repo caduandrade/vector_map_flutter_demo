@@ -20,7 +20,7 @@ class ColorByRulePageState extends ExamplePageState {
   Widget buildContent() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        theme: MapTheme.rule(contourColor: Colors.white, colorRules: [
+        theme: MapRuleTheme(contourColor: Colors.white, colorRules: [
           (feature) {
             String? value = feature.getValue('Name');
             return value == 'Faraday' ? Colors.red : null;

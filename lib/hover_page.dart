@@ -77,7 +77,7 @@ class HoverPageState extends ExamplePageState {
         dataSource: polygons,
         theme:
             MapTheme(color: Colors.white, labelVisibility: (feature) => false),
-        hoverTheme: MapTheme.rule(colorRules: [
+        hoverTheme: MapRuleTheme(colorRules: [
           (feature) {
             return feature.label == 'Galileu' ? Colors.blue : null;
           }

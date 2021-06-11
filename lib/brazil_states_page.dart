@@ -33,7 +33,7 @@ class BrazilStatesPageState extends ExamplePageState {
     MapLayer layer = MapLayer(
         dataSource: brazilStates,
         theme:
-            MapTheme.value(contourColor: Colors.black, key: 'REGIAO', colors: {
+            MapValueTheme(contourColor: Colors.black, key: 'REGIAO', colors: {
           'Centro-Oeste': Colors.blue,
           'Sudeste': Colors.green,
           'Sul': Colors.orange,

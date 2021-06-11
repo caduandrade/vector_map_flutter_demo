@@ -36,7 +36,7 @@ class WorldPageState extends ExamplePageState {
         theme: MapTheme(contourColor: Colors.white, color: Colors.grey));
     MapLayer layer2 = MapLayer(
         dataSource: worldMarkers,
-        theme: MapTheme.gradient(
+        theme: MapGradientTheme(
             contourColor: Colors.white,
             key: 'size',
             colors: [Colors.blue.withAlpha(100), Colors.green.withAlpha(100)],
