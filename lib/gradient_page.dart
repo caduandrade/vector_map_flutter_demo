@@ -21,7 +21,8 @@ class GradientPageState extends ExamplePageState {
   List<MenuItem> buildMenuItems() {
     return [
       MenuItem('Auto min max', _autoMinMax),
-      MenuItem('Min max', _minMax)
+      MenuItem('Min max', _minMax),
+      MenuItem('Legend', _legend)
     ];
   }
 
@@ -51,6 +52,23 @@ class GradientPageState extends ExamplePageState {
             colors: [Colors.blue, Colors.yellow, Colors.red]));
 
     VectorMap map = VectorMap(layers: [layer]);
+
+    return map;
+  }
+
+  Widget _legend() {
+    MapLayer layer = MapLayer(
+        dataSource: polygons,
+        theme: MapGradientTheme(
+            contourColor: Colors.white,
+            labelVisibility: (feature) => true,
+            key: 'Seq',
+            colors: [Colors.blue, Colors.yellow, Colors.red]));
+
+    VectorMap map = VectorMap(
+        padding: EdgeInsets.fromLTRB(8, 8, 50, 8),
+        layers: [layer],
+        addons: [GradientLegend(layer: layer)]);
 
     return map;
   }

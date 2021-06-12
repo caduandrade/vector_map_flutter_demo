@@ -147,7 +147,7 @@ abstract class ExamplePageState extends State<StatefulWidget> {
 
     if (debugger != null) {
       rowChildren.add(Container(
-        child: MapDebuggerWidget(debugger!),
+        child: SizedBox(child: MapDebuggerWidget(debugger!), width: 200),
         padding: EdgeInsets.all(8),
         decoration:
             BoxDecoration(border: Border(left: BorderSide(color: Colors.blue))),
