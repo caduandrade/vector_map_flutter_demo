@@ -145,9 +145,9 @@ packages:
   vector_map:
     dependency: "direct main"
     description:
-      name: vector_map
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../vector_map_flutter"
+      relative: true
+    source: path
     version: "0.4.0"
   vector_math:
     dependency: transitive

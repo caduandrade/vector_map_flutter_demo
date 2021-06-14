@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/menu.dart';
@@ -65,10 +66,13 @@ class GradientPageState extends ExamplePageState {
             key: 'Seq',
             colors: [Colors.blue, Colors.yellow, Colors.red]));
 
-    VectorMap map = VectorMap(
-        padding: EdgeInsets.fromLTRB(8, 8, 50, 8),
-        layers: [layer],
-        addon: GradientLegend(layer: layer));
+    VectorMap map =
+        VectorMap(padding: EdgeInsets.fromLTRB(8, 8, 50, 8), layers: [
+      layer
+    ], addons: [
+      AddonContainer.anchor(
+          addon: GradientLegend(layer: layer), padding: EdgeInsets.all(5))
+    ]);
 
     return map;
   }

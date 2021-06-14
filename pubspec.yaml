@@ -24,8 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   multi_split_view: ^1.1.0+2
-  vector_map: 0.4.0
-    #path: ../vector_map_flutter
+  vector_map:
+    path: ../vector_map_flutter
 
 dev_dependencies:
   flutter_test:
