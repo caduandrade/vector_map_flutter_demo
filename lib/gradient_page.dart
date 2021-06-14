@@ -70,8 +70,8 @@ class GradientPageState extends ExamplePageState {
         VectorMap(padding: EdgeInsets.fromLTRB(8, 8, 50, 8), layers: [
       layer
     ], addons: [
-      AddonContainer.anchor(
-          addon: GradientLegend(layer: layer), padding: EdgeInsets.all(5))
+      GradientLegend(
+          layer: layer, padding: EdgeInsets.all(5), margin: EdgeInsets.all(5))
     ]);
 
     return map;
