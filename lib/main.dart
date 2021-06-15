@@ -13,6 +13,7 @@ import 'package:vector_map_demo/contour_page.dart';
 import 'package:vector_map_demo/default_colors_page.dart';
 import 'package:vector_map_demo/enable_hover_by_value_page.dart';
 import 'package:vector_map_demo/get_started_page.dart';
+import 'package:vector_map_demo/gradient_legend_page.dart';
 import 'package:vector_map_demo/gradient_page.dart';
 import 'package:vector_map_demo/hover_layer_page.dart';
 import 'package:vector_map_demo/hover_page.dart';
@@ -73,6 +74,7 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
       MenuItem('Click listener', _clickListenerPage),
       MenuItem('Color by rule', _colorByRulePage),
       MenuItem('Gradient', _gradientPage),
+      MenuItem('Gradient legend', _gradientLegendPage),
       MenuItem('Parser', _parserPage),
       MenuItem('Hover', _hoverPage),
       MenuItem('Label', _labelPage),
@@ -129,8 +131,8 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
   }
 
   _printPolygonProperties(String geojson) async {
-    print('Name | Seq | Rnd');
-    print('--- | --- | ---');
+    print('Name | Seq | Rnd | Gts');
+    print('--- | --- | --- | ---');
     Map<String, dynamic> map = await json.decode(geojson);
     List features = map['features']!;
     for (Map<String, dynamic> feature in features) {
@@ -142,7 +144,8 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
         rnd = properties['Rnd'];
         rnd = '"$rnd"';
       }
-      print('"$name" | $seq | $rnd');
+      int gts = properties['Gts'];
+      print('"$name" | $seq | $rnd | $gts');
     }
   }
 
@@ -236,6 +239,10 @@ class VectorMapDemoPageState extends State<VectorMapDemoPage> {
 
   GradientPage _gradientPage() {
     return GradientPage();
+  }
+
+  GradientLegendPage _gradientLegendPage() {
+    return GradientLegendPage();
   }
 
   ParserPage _parserPage() {

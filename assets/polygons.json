@@ -6,7 +6,8 @@
       "properties": {
         "Seq": 1,
         "Name": "Einstein",
-        "Rnd": "73"
+        "Rnd": "73",
+        "Gts": 15000
       },
       "geometry": {
         "type": "Polygon",
@@ -41,7 +42,8 @@
       "properties": {
         "Seq": 2,
         "Name": "Newton",
-        "Rnd": "92"
+        "Rnd": "92",
+        "Gts": 7500
       },
       "geometry": {
         "type": "Polygon",
@@ -76,7 +78,8 @@
       "properties": {
         "Seq": 3,
         "Name": "Galileu",
-        "Rnd": "10"
+        "Rnd": "10",
+        "Gts": 3000
       },
       "geometry": {
         "type": "Polygon",
@@ -110,7 +113,8 @@
       "type": "Feature",
       "properties": {
         "Seq": 4,
-        "Name": "Darwin"
+        "Name": "Darwin",
+        "Gts": 15000
       },
       "geometry": {
         "type": "Polygon",
@@ -145,7 +149,8 @@
       "properties": {
         "Seq": 5,
         "Name": "Pasteur",
-        "Rnd": "77"
+        "Rnd": "77",
+        "Gts": 17000
       },
       "geometry": {
         "type": "Polygon",
@@ -180,7 +185,8 @@
       "properties": {
         "Seq": 6,
         "Name": "Faraday",
-        "Rnd": "32"
+        "Rnd": "32",
+        "Gts": 17500
       },
       "geometry": {
         "type": "Polygon",
@@ -215,7 +221,8 @@
       "properties": {
         "Seq": 7,
         "Name": "Arquimedes",
-        "Rnd": "87"
+        "Rnd": "87",
+        "Gts": 25000
       },
       "geometry": {
         "type": "Polygon",
@@ -250,7 +257,8 @@
       "properties": {
         "Seq": 8,
         "Name": "Tesla",
-        "Rnd": "17"
+        "Rnd": "17",
+        "Gts": 12500
       },
       "geometry": {
         "type": "Polygon",
@@ -284,7 +292,8 @@
       "type": "Feature",
       "properties": {
         "Seq": 9,
-        "Name": "Lavoisier"
+        "Name": "Lavoisier",
+        "Gts": 4000
       },
       "geometry": {
         "type": "Polygon",
@@ -319,7 +328,8 @@
       "properties": {
         "Seq": 10,
         "Name": "Kepler",
-        "Rnd": "32"
+        "Rnd": "32",
+        "Gts": 18000
       },
       "geometry": {
         "type": "Polygon",
@@ -354,7 +364,8 @@
       "properties": {
         "Seq": 11,
         "Name": "Turing",
-        "Rnd": "93"
+        "Rnd": "93",
+        "Gts": 31400
       },
       "geometry": {
         "type": "Polygon",
