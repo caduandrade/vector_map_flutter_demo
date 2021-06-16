@@ -31,6 +31,8 @@ class GradientLegendPageState extends ExamplePageState {
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
             key: 'Gts',
+            min: 7500,
+            max: 25000,
             colors: [Colors.blue, Colors.yellow, Colors.red]),
         highlightTheme: MapHighlightTheme(color: Colors.brown[900]));
 
