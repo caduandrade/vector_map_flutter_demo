@@ -20,10 +20,10 @@ class GradientLegendPageState extends ExamplePageState {
 
   @override
   List<MenuItem> buildMenuItems() {
-    return [MenuItem('Legend', _legend)];
+    return [MenuItem('Fill', _fill), MenuItem('Contour', _contour)];
   }
 
-  Widget _legend() {
+  Widget _fill() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
         hoverTheme: MapTheme(color: Colors.black),
@@ -31,7 +31,30 @@ class GradientLegendPageState extends ExamplePageState {
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
             key: 'Gts',
-            colors: [Colors.blue, Colors.yellow, Colors.red]));
+            colors: [Colors.blue, Colors.yellow, Colors.red]),
+        highlightTheme: MapHighlightTheme(color: Colors.brown[900]));
+
+    VectorMap map =
+        VectorMap(padding: EdgeInsets.fromLTRB(8, 8, 50, 8), layers: [
+      layer
+    ], addons: [
+      GradientLegend(
+          layer: layer, padding: EdgeInsets.all(5), margin: EdgeInsets.all(5))
+    ]);
+
+    return map;
+  }
+
+  Widget _contour() {
+    MapLayer layer = MapLayer(
+        dataSource: polygons,
+        hoverTheme: MapTheme(contourColor: Colors.black),
+        theme: MapGradientTheme(
+            contourColor: Colors.white,
+            labelVisibility: (feature) => true,
+            key: 'Gts',
+            colors: [Colors.blue, Colors.yellow, Colors.red]),
+        highlightTheme: MapHighlightTheme(contourColor: Colors.brown[900]));
 
     VectorMap map =
         VectorMap(padding: EdgeInsets.fromLTRB(8, 8, 50, 8), layers: [
