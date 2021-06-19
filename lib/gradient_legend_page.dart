@@ -20,10 +20,52 @@ class GradientLegendPageState extends ExamplePageState {
 
   @override
   List<MenuItem> buildMenuItems() {
-    return [MenuItem('Fill', _fill), MenuItem('Contour', _contour)];
+    return [
+      MenuItem('Default', _default),
+      MenuItem('Min Max', _minMax),
+      MenuItem('Highlight fill', _highlightFill),
+      MenuItem('Highlight contour', _highlightContour),
+      MenuItem('Customization', _customization)
+    ];
   }
 
-  Widget _fill() {
+  Widget _default() {
+    MapLayer layer = MapLayer(
+        dataSource: polygons,
+        theme: MapGradientTheme(
+            contourColor: Colors.white,
+            labelVisibility: (feature) => true,
+            key: 'Gts',
+            colors: [Colors.blue, Colors.yellow, Colors.red]));
+
+    VectorMap map = VectorMap(
+        layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8),
+        layers: [layer],
+        addons: [GradientLegend(layer: layer)]);
+
+    return map;
+  }
+
+  Widget _minMax() {
+    MapLayer layer = MapLayer(
+        dataSource: polygons,
+        theme: MapGradientTheme(
+            contourColor: Colors.white,
+            labelVisibility: (feature) => true,
+            key: 'Gts',
+            min: 7500,
+            max: 25000,
+            colors: [Colors.blue, Colors.yellow, Colors.red]));
+
+    VectorMap map = VectorMap(
+        layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8),
+        layers: [layer],
+        addons: [GradientLegend(layer: layer)]);
+
+    return map;
+  }
+
+  Widget _highlightFill() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
         theme: MapGradientTheme(
@@ -35,18 +77,15 @@ class GradientLegendPageState extends ExamplePageState {
             colors: [Colors.blue, Colors.yellow, Colors.red]),
         highlightTheme: MapHighlightTheme(color: Colors.brown[900]));
 
-    VectorMap map =
-        VectorMap(layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8), layers: [
-      layer
-    ], addons: [
-      GradientLegend(
-          layer: layer, barBorder: Border.all(width: 1, color: Colors.black))
-    ]);
+    VectorMap map = VectorMap(
+        layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8),
+        layers: [layer],
+        addons: [GradientLegend(layer: layer)]);
 
     return map;
   }
 
-  Widget _contour() {
+  Widget _highlightContour() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
         theme: MapGradientTheme(
@@ -60,6 +99,29 @@ class GradientLegendPageState extends ExamplePageState {
         layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8),
         layers: [layer],
         addons: [GradientLegend(layer: layer)]);
+
+    return map;
+  }
+
+  Widget _customization() {
+    MapLayer layer = MapLayer(
+        dataSource: polygons,
+        theme: MapGradientTheme(
+            contourColor: Colors.white,
+            labelVisibility: (feature) => true,
+            key: 'Gts',
+            colors: [Colors.blue, Colors.yellow, Colors.red]));
+
+    VectorMap map =
+        VectorMap(layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8), layers: [
+      layer
+    ], addons: [
+      GradientLegend(
+          layer: layer,
+          barBorder: Border.all(width: 2),
+          barHeight: 50,
+          barWidth: 30)
+    ]);
 
     return map;
   }
