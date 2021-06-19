@@ -40,7 +40,7 @@ class BrazilStatesPageState extends ExamplePageState {
           'Nordeste': Colors.red,
           'Norte': Colors.yellow
         }),
-        hoverTheme: MapTheme(color: Colors.grey[800]));
+        highlightTheme: MapHighlightTheme(color: Colors.grey[800]));
 
     VectorMap map = VectorMap(debugger: debugger, layers: [layer]);
 

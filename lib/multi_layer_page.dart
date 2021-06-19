@@ -19,14 +19,14 @@ class MultiLayerPageState extends ExamplePageState {
 
   @override
   Widget buildContent() {
-    MapTheme hoverTheme = MapTheme(color: Colors.green);
+    MapHighlightTheme highlightTheme = MapHighlightTheme(color: Colors.green);
 
     MapLayer polygonsLayer =
-        MapLayer(dataSource: polygons, hoverTheme: hoverTheme);
+        MapLayer(dataSource: polygons, highlightTheme: highlightTheme);
     MapLayer pointsLayer = MapLayer(
         dataSource: points,
         theme: MapTheme(color: Colors.black),
-        hoverTheme: hoverTheme);
+        highlightTheme: highlightTheme);
 
     VectorMap map = VectorMap(layers: [polygonsLayer, pointsLayer]);
     return map;

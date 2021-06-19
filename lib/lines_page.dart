@@ -19,13 +19,14 @@ class LinesPageState extends ExamplePageState {
 
   @override
   Widget buildContent() {
-    MapTheme hoverTheme = MapTheme(color: Colors.green);
+    MapHighlightTheme highlightTheme = MapHighlightTheme(color: Colors.green);
 
-    MapLayer brazilLayer = MapLayer(dataSource: brazil, hoverTheme: hoverTheme);
+    MapLayer brazilLayer =
+        MapLayer(dataSource: brazil, highlightTheme: highlightTheme);
     MapLayer brazilLinesLayer = MapLayer(
         dataSource: brazilLines,
         theme: MapTheme(color: Colors.black),
-        hoverTheme: hoverTheme);
+        highlightTheme: highlightTheme);
 
     VectorMap map = VectorMap(layers: [brazilLayer, brazilLinesLayer]);
     return map;

@@ -23,14 +23,14 @@ class HoverPageState extends ExamplePageState {
       MenuItem('Color', _color),
       MenuItem('Contour', _contourColor),
       MenuItem('Label', _label),
-      MenuItem('Override', _override),
       MenuItem('Listener', _listener)
     ];
   }
 
   Widget _listener() {
     MapLayer layer = MapLayer(
-        dataSource: polygons, hoverTheme: MapTheme(color: Colors.grey[700]));
+        dataSource: polygons,
+        highlightTheme: MapHighlightTheme(color: Colors.grey[700]));
 
     VectorMap map = VectorMap(
         layers: [layer],
@@ -46,7 +46,8 @@ class HoverPageState extends ExamplePageState {
 
   Widget _color() {
     MapLayer layer = MapLayer(
-        dataSource: polygons, hoverTheme: MapTheme(color: Colors.green));
+        dataSource: polygons,
+        highlightTheme: MapHighlightTheme(color: Colors.green));
 
     VectorMap map = VectorMap(layers: [layer]);
 
@@ -55,7 +56,8 @@ class HoverPageState extends ExamplePageState {
 
   Widget _contourColor() {
     MapLayer layer = MapLayer(
-        dataSource: polygons, hoverTheme: MapTheme(contourColor: Colors.red));
+        dataSource: polygons,
+        highlightTheme: MapHighlightTheme(contourColor: Colors.red));
 
     VectorMap map = VectorMap(layers: [layer]);
 
@@ -65,23 +67,7 @@ class HoverPageState extends ExamplePageState {
   Widget _label() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        hoverTheme: MapTheme(labelVisibility: (feature) => true));
-
-    VectorMap map = VectorMap(layers: [layer]);
-
-    return map;
-  }
-
-  Widget _override() {
-    MapLayer layer = MapLayer(
-        dataSource: polygons,
-        theme:
-            MapTheme(color: Colors.white, labelVisibility: (feature) => false),
-        hoverTheme: MapRuleTheme(colorRules: [
-          (feature) {
-            return feature.label == 'Galileu' ? Colors.blue : null;
-          }
-        ], labelVisibility: (feature) => feature.label == 'Galileu'));
+        highlightTheme: MapHighlightTheme(labelVisibility: (feature) => true));
 
     VectorMap map = VectorMap(layers: [layer]);
 

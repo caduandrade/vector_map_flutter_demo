@@ -26,7 +26,6 @@ class GradientLegendPageState extends ExamplePageState {
   Widget _fill() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        hoverTheme: MapTheme(color: Colors.black),
         theme: MapGradientTheme(
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
@@ -37,11 +36,11 @@ class GradientLegendPageState extends ExamplePageState {
         highlightTheme: MapHighlightTheme(color: Colors.brown[900]));
 
     VectorMap map =
-        VectorMap(padding: EdgeInsets.fromLTRB(8, 8, 50, 8), layers: [
+        VectorMap(layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8), layers: [
       layer
     ], addons: [
       GradientLegend(
-          layer: layer, padding: EdgeInsets.all(5), margin: EdgeInsets.all(5))
+          layer: layer, barBorder: Border.all(width: 1, color: Colors.black))
     ]);
 
     return map;
@@ -50,7 +49,6 @@ class GradientLegendPageState extends ExamplePageState {
   Widget _contour() {
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        hoverTheme: MapTheme(contourColor: Colors.black),
         theme: MapGradientTheme(
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
@@ -58,13 +56,10 @@ class GradientLegendPageState extends ExamplePageState {
             colors: [Colors.blue, Colors.yellow, Colors.red]),
         highlightTheme: MapHighlightTheme(contourColor: Colors.brown[900]));
 
-    VectorMap map =
-        VectorMap(padding: EdgeInsets.fromLTRB(8, 8, 50, 8), layers: [
-      layer
-    ], addons: [
-      GradientLegend(
-          layer: layer, padding: EdgeInsets.all(5), margin: EdgeInsets.all(5))
-    ]);
+    VectorMap map = VectorMap(
+        layersPadding: EdgeInsets.fromLTRB(8, 8, 56, 8),
+        layers: [layer],
+        addons: [GradientLegend(layer: layer)]);
 
     return map;
   }

@@ -19,7 +19,8 @@ class ClickListenerPageState extends ExamplePageState {
   @override
   Widget buildContent() {
     MapLayer layer = MapLayer(
-        dataSource: polygons, hoverTheme: MapTheme(color: Colors.grey[800]!));
+        dataSource: polygons,
+        highlightTheme: MapHighlightTheme(color: Colors.grey[800]!));
 
     VectorMap map = VectorMap(
         layers: [layer],

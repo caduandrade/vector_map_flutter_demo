@@ -22,7 +22,7 @@ class EnableHoverByValuePageState extends ExamplePageState {
     MapLayer layer = MapLayer(
         dataSource: polygons,
         theme: MapValueTheme(key: 'Seq', colors: {4: Colors.green}),
-        hoverTheme: MapTheme(color: Colors.green[900]!));
+        highlightTheme: MapHighlightTheme(color: Colors.green[900]!));
 
     // enabling hover only for the 'Darwin' feature
     VectorMap map = VectorMap(

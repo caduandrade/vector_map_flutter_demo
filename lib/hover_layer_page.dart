@@ -12,8 +12,6 @@ class HoverLayerPage extends StatefulWidget {
 class HoverLayerPageState extends ExamplePageState {
   late MapDataSource dataSource1;
   late MapDataSource dataSource2;
-  late MapLayer layer1;
-  late MapLayer layer2;
 
   @override
   Future<DataSources> loadDataSources() async {
@@ -32,22 +30,8 @@ class HoverLayerPageState extends ExamplePageState {
       MapPolygon.coordinates([4, 2, 6, 4, 8, 2, 6, 0, 4, 2])
     ]);
 
-    MapTheme hoverTheme =
-        MapTheme(color: Colors.black, contourColor: Colors.black);
-
-    MapLayer layer1 = MapLayer(
-        dataSource: dataSource1,
-        theme: MapTheme(color: Colors.yellow, contourColor: Colors.black),
-        hoverTheme: hoverTheme);
-    MapLayer layer2 = MapLayer(
-        dataSource: dataSource2,
-        theme: MapTheme(color: Colors.green, contourColor: Colors.black),
-        hoverTheme: hoverTheme);
-
     this.dataSource1 = dataSource1;
     this.dataSource2 = dataSource2;
-    this.layer1 = layer1;
-    this.layer2 = layer2;
   }
 
   @override
@@ -59,13 +43,37 @@ class HoverLayerPageState extends ExamplePageState {
   }
 
   Widget _overlayOff() {
+    MapHighlightTheme highlightTheme =
+        MapHighlightTheme(color: Colors.black, contourColor: Colors.black);
+
+    MapLayer layer1 = MapLayer(
+        dataSource: dataSource1,
+        theme: MapTheme(color: Colors.yellow, contourColor: Colors.black),
+        highlightTheme: highlightTheme);
+    MapLayer layer2 = MapLayer(
+        dataSource: dataSource2,
+        theme: MapTheme(color: Colors.green, contourColor: Colors.black),
+        highlightTheme: highlightTheme);
+
     VectorMap map = VectorMap(layers: [layer1, layer2]);
     return map;
   }
 
   Widget _overlayOn() {
-    VectorMap map =
-        VectorMap(layers: [layer1, layer2], overlayHoverContour: true);
+    MapLayer layer1 = MapLayer(
+        dataSource: dataSource1,
+        theme: MapTheme(color: Colors.yellow, contourColor: Colors.black),
+        highlightTheme: MapHighlightTheme(
+            color: Colors.black,
+            contourColor: Colors.black,
+            overlayContour: true));
+    MapLayer layer2 = MapLayer(
+        dataSource: dataSource2,
+        theme: MapTheme(color: Colors.green, contourColor: Colors.black),
+        highlightTheme:
+            MapHighlightTheme(color: Colors.black, contourColor: Colors.black));
+
+    VectorMap map = VectorMap(layers: [layer1, layer2]);
     return map;
   }
 }

@@ -36,7 +36,7 @@ class BrazilCountiesPageState extends ExamplePageState {
             contourColor: Colors.green[800],
             key: 'id',
             colors: [Colors.yellow, Colors.lightGreen]),
-        hoverTheme: MapTheme(color: Colors.green[900]));
+        highlightTheme: MapHighlightTheme(color: Colors.green[900]));
 
     VectorMap map = VectorMap(debugger: debugger, layers: [layer]);
 
