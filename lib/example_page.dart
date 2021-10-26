@@ -31,9 +31,9 @@ abstract class ExamplePageState extends State<StatefulWidget> {
   ContentBuilder? _currentBuilder;
 
   MultiSplitViewController _horizontalController =
-      MultiSplitViewController(weights: [.1, .8, .1]);
+      MultiSplitViewController(initialWeights: [.1, .8, .1]);
   MultiSplitViewController _verticalController =
-      MultiSplitViewController(weights: [.1, .8, .1]);
+      MultiSplitViewController(initialWeights: [.1, .8, .1]);
 
   late String polygonsGeoJSON;
   late String pointsGeoJSON;
@@ -125,14 +125,12 @@ abstract class ExamplePageState extends State<StatefulWidget> {
         home: scaffold);
 
     MultiSplitView horizontal = MultiSplitView(
-        dividerThickness: 20,
         children: [_buildEmptyArea(), materialApp, _buildEmptyArea()],
         minimalWeight: .1,
         controller: _horizontalController);
 
     MultiSplitView vertical = MultiSplitView(
         axis: Axis.vertical,
-        dividerThickness: 20,
         children: [_buildEmptyArea(), horizontal, _buildEmptyArea()],
         minimalWeight: .1,
         controller: _verticalController);
@@ -156,7 +154,9 @@ abstract class ExamplePageState extends State<StatefulWidget> {
 
     Row row = Row(
         children: rowChildren, crossAxisAlignment: CrossAxisAlignment.stretch);
-    return Container(child: row, color: Colors.white);
+    return MultiSplitViewTheme(
+        child: Container(child: row, color: Colors.white),
+        data: MultiSplitViewThemeData(dividerThickness: 20));
   }
 
   Widget _buildEmptyArea() {
