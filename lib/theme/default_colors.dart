@@ -5,8 +5,7 @@ import 'package:vector_map_demo/geojson_asset.dart';
 
 class DefaultColorsExample extends Example {
   @override
-  Widget buildMainWidget(BuildContext context)=>MainWidget();
-  
+  Widget buildMainWidget(BuildContext context) => MainWidget();
 }
 
 class MainWidget extends StatefulWidget {
@@ -15,7 +14,6 @@ class MainWidget extends StatefulWidget {
 }
 
 class MainWidgetState extends State<MainWidget> {
-
   VectorMapController _controller = VectorMapController();
 
   @override
@@ -28,7 +26,9 @@ class MainWidgetState extends State<MainWidget> {
     String geoJson = await GeoJsonAsset.polygons();
 
     MapDataSource polygons = await MapDataSource.geoJson(geoJson: geoJson);
-    MapLayer layer = MapLayer(dataSource: polygons,theme: MapTheme(color: Colors.yellow, contourColor: Colors.red));
+    MapLayer layer = MapLayer(
+        dataSource: polygons,
+        theme: MapTheme(color: Colors.yellow, contourColor: Colors.red));
     _controller.addLayer(layer);
   }
 
@@ -37,5 +37,4 @@ class MainWidgetState extends State<MainWidget> {
     VectorMap map = VectorMap(controller: _controller);
     return map;
   }
-
 }

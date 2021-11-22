@@ -5,6 +5,11 @@ import 'package:vector_map_demo/brazil_states.dart';
 import 'package:vector_map_demo/click_listener.dart';
 import 'package:vector_map_demo/contour/contour_thickness.dart';
 import 'package:vector_map_demo/get_started.dart';
+import 'package:vector_map_demo/hover/color.dart';
+import 'package:vector_map_demo/hover/contour.dart';
+import 'package:vector_map_demo/hover/enable_hover_by_value.dart';
+import 'package:vector_map_demo/hover/label.dart';
+import 'package:vector_map_demo/hover/listener.dart';
 import 'package:vector_map_demo/lines.dart';
 import 'package:vector_map_demo/marker/circle/circle_marker.dart';
 import 'package:vector_map_demo/marker/circle/fixed_radius.dart';
@@ -32,8 +37,8 @@ void main() {
       appMenuBuilder: () {
         return [
           MenuItem(name: 'Get started', builder: () => GetStartedExample()),
-          MenuItem(name:'Parser', builder:()=>ParserExample()),
-          MenuItem(name: 'Theme', builder:()=>DefaultColorsExample()),
+          MenuItem(name: 'Parser', builder: () => ParserExample()),
+          MenuItem(name: 'Theme', builder: () => DefaultColorsExample()),
           MenuItem(
               name: 'Label',
               builder: () => LabelVisibilityExample(),
@@ -60,6 +65,28 @@ void main() {
           MenuItem(
               name: 'No contour',
               builder: () => NoContourExample(),
+              indentation: 2),
+          MenuItem(name: 'Cursor hover', italic: true),
+          MenuItem(
+              name: 'Color',
+              builder: () => HoverColorExample(),
+              indentation: 2),
+          MenuItem(
+              name: 'Contour',
+              builder: () => HoverContourExample(),
+              indentation: 2),
+          MenuItem(
+              name: 'Label',
+              builder: () => HoverLabelExample(),
+              indentation: 2),
+          MenuItem(
+              name: 'Listener',
+              builder: () => HoverListenerExample(),
+              indentation: 2,
+              consoleEnabled: true),
+          MenuItem(
+              name: 'Enabling hover by property value',
+              builder: () => EnableHoverByValueExample(),
               indentation: 2),
           MenuItem(name: 'Marker', italic: true),
           MenuItem(
@@ -95,7 +122,7 @@ void main() {
               name: 'States',
               builder: () => BrazilStatesExample(),
               indentation: 2),
-          MenuItem(name: 'World',builder: ()=> WorldExample()),
+          MenuItem(name: 'World', builder: () => WorldExample()),
           MenuItem(name: 'Lines (BETA)', builder: () => LinesExample()),
         ];
       }));

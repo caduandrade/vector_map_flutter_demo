@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/geojson_asset.dart';
 
-class ParserExample extends Example {
+class EnableHoverByValueExample extends Example {
   @override
   Widget buildMainWidget(BuildContext context) => MainWidget();
 }
@@ -25,23 +25,24 @@ class MainWidgetState extends State<MainWidget> {
   void _loadGeoJson() async {
     String geoJson = await GeoJsonAsset.polygons();
 
-    MapDataSource polygons = await MapDataSource.geoJson(
-        geoJson: geoJson,
-        keys: ['Seq', 'Rnd'],
-        parseToNumber: ['Rnd'],
-        labelKey: 'Rnd');
+    MapDataSource polygons =
+        await MapDataSource.geoJson(geoJson: geoJson, keys: ['Seq']);
+    // coloring only the 'Darwin' feature
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        theme: MapGradientTheme(
-            labelVisibility: (feature) => true,
-            key: 'Rnd',
-            colors: [Colors.blue, Colors.red]));
+        theme: MapValueTheme(key: 'Seq', colors: {4: Colors.green}),
+        highlightTheme: MapHighlightTheme(color: Colors.green[900]!));
     _controller.addLayer(layer);
   }
 
   @override
   Widget build(BuildContext context) {
-    VectorMap map = VectorMap(controller: _controller);
+    // enabling hover only for the 'Darwin' feature
+    VectorMap map = VectorMap(
+        controller: _controller,
+        hoverRule: (feature) {
+          return feature.getValue('Seq') == 4;
+        });
     return map;
   }
 }

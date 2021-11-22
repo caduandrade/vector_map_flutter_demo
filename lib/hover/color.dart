@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/geojson_asset.dart';
 
-class ParserExample extends Example {
+class HoverColorExample extends Example {
   @override
   Widget buildMainWidget(BuildContext context) => MainWidget();
 }
@@ -25,17 +25,11 @@ class MainWidgetState extends State<MainWidget> {
   void _loadGeoJson() async {
     String geoJson = await GeoJsonAsset.polygons();
 
-    MapDataSource polygons = await MapDataSource.geoJson(
-        geoJson: geoJson,
-        keys: ['Seq', 'Rnd'],
-        parseToNumber: ['Rnd'],
-        labelKey: 'Rnd');
+    MapDataSource polygons =
+        await MapDataSource.geoJson(geoJson: geoJson, labelKey: 'Name');
     MapLayer layer = MapLayer(
         dataSource: polygons,
-        theme: MapGradientTheme(
-            labelVisibility: (feature) => true,
-            key: 'Rnd',
-            colors: [Colors.blue, Colors.red]));
+        highlightTheme: MapHighlightTheme(color: Colors.green));
     _controller.addLayer(layer);
   }
 
