@@ -1,10 +1,9 @@
 import 'package:demoflu/demoflu.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/geojson_asset.dart';
 
-class LabelRuleExample extends Example {
+class ContourThicknessExample extends Example {
   @override
   Widget buildMainWidget(BuildContext context) => MainWidget();
 }
@@ -15,7 +14,7 @@ class MainWidget extends StatefulWidget {
 }
 
 class MainWidgetState extends State<MainWidget> {
-  VectorMapController _controller = VectorMapController();
+  VectorMapController _controller = VectorMapController(contourThickness: 3);
 
   @override
   void initState() {
@@ -26,12 +25,8 @@ class MainWidgetState extends State<MainWidget> {
   void _loadGeoJson() async {
     String geoJson = await GeoJsonAsset.polygons();
 
-    MapDataSource dataSource =
-        await MapDataSource.geoJson(geoJson: geoJson, labelKey: 'Name');
-    MapLayer layer = MapLayer(
-        dataSource: dataSource,
-        theme:
-            MapTheme(labelVisibility: (feature) => feature.label == 'Darwin'));
+    MapDataSource polygons = await MapDataSource.geoJson(geoJson: geoJson);
+    MapLayer layer = MapLayer(dataSource: polygons);
     _controller.addLayer(layer);
   }
 

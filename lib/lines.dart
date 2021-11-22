@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/geojson_asset.dart';
 
-class GetStartedExample extends Example {
+class LinesExample extends Example {
   @override
   Widget buildMainWidget(BuildContext context) => MainWidget();
 }
@@ -23,11 +23,23 @@ class MainWidgetState extends State<MainWidget> {
   }
 
   void _loadGeoJson() async {
-    String geoJson = await GeoJsonAsset.polygons();
+    String brazilGeoJson = await GeoJsonAsset.brazil();
+    String linesGeoJson = await GeoJsonAsset.brazilLines();
 
-    MapDataSource dataSource = await MapDataSource.geoJson(geoJson: geoJson);
-    MapLayer layer = MapLayer(dataSource: dataSource);
-    _controller.addLayer(layer);
+    MapHighlightTheme highlightTheme = MapHighlightTheme(color: Colors.green);
+
+    MapDataSource brazil = await MapDataSource.geoJson(geoJson: brazilGeoJson);
+
+    MapLayer brazilLayer =
+        MapLayer(dataSource: brazil, highlightTheme: highlightTheme);
+    _controller.addLayer(brazilLayer);
+
+    MapDataSource lines = await MapDataSource.geoJson(geoJson: linesGeoJson);
+    MapLayer linesLayer = MapLayer(
+        dataSource: lines,
+        theme: MapTheme(color: Colors.black),
+        highlightTheme: highlightTheme);
+    _controller.addLayer(linesLayer);
   }
 
   @override

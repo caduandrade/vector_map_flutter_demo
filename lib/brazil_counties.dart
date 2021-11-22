@@ -29,10 +29,10 @@ class MainWidgetState extends State<MainWidget> {
   void _loadGeoJson() async {
     String geoJson = await GeoJsonAsset.brazilCounties();
 
-    MapDataSource dataSource = await MapDataSource.geoJson(
+    MapDataSource brazilCounties = await MapDataSource.geoJson(
         geoJson: geoJson, keys: ['id'], parseToNumber: ['id']);
     MapLayer layer = MapLayer(
-        dataSource: dataSource,
+        dataSource: brazilCounties,
         theme: MapGradientTheme(
             contourColor: Colors.green[800],
             key: 'id',
