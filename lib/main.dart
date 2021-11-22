@@ -12,11 +12,14 @@ import 'package:vector_map_demo/marker/circle/mapped_radius.dart';
 import 'package:vector_map_demo/marker/circle/property_radius.dart';
 import 'package:vector_map_demo/marker/circle/proportion_radius.dart';
 import 'package:vector_map_demo/contour/no_contour.dart';
+import 'package:vector_map_demo/parser.dart';
 import 'package:vector_map_demo/theme/color_by_rule.dart';
 import 'package:vector_map_demo/theme/color_by_value.dart';
+import 'package:vector_map_demo/theme/default_colors.dart';
 import 'package:vector_map_demo/theme/label/label_rule.dart';
 import 'package:vector_map_demo/theme/label/label_style.dart';
 import 'package:vector_map_demo/theme/label/label_visibility.dart';
+import 'package:vector_map_demo/world.dart';
 
 void main() {
   Size? maxSize;
@@ -29,7 +32,8 @@ void main() {
       appMenuBuilder: () {
         return [
           MenuItem(name: 'Get started', builder: () => GetStartedExample()),
-          MenuItem(name: 'Theme', italic: true),
+          MenuItem(name:'Parser', builder:()=>ParserExample()),
+          MenuItem(name: 'Theme', builder:()=>DefaultColorsExample()),
           MenuItem(
               name: 'Label',
               builder: () => LabelVisibilityExample(),
@@ -91,6 +95,7 @@ void main() {
               name: 'States',
               builder: () => BrazilStatesExample(),
               indentation: 2),
+          MenuItem(name: 'World',builder: ()=> WorldExample()),
           MenuItem(name: 'Lines (BETA)', builder: () => LinesExample()),
         ];
       }));
