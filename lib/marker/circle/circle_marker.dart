@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/geojson_asset.dart';
 
-class GetStartedExample extends Example {
+class CircleMarkerExample extends Example {
   @override
   Widget buildMainWidget(BuildContext context) => MainWidget();
 }
@@ -23,11 +23,19 @@ class MainWidgetState extends State<MainWidget> {
   }
 
   void _loadGeoJson() async {
-    String geoJson = await GeoJsonAsset.polygons();
+    String polygonsGeoJson = await GeoJsonAsset.polygons();
+    String pointsGeoJson = await GeoJsonAsset.points();
 
-    MapDataSource dataSource = await MapDataSource.geoJson(geoJson: geoJson);
-    MapLayer layer = MapLayer(dataSource: dataSource);
-    _controller.addLayer(layer);
+    MapDataSource polygons =
+        await MapDataSource.geoJson(geoJson: polygonsGeoJson);
+    MapLayer polygonsLayer = MapLayer(dataSource: polygons);
+    _controller.addLayer(polygonsLayer);
+
+    MapDataSource points = await MapDataSource.geoJson(
+        geoJson: pointsGeoJson, keys: ['AN'], labelKey: 'AN');
+    MapLayer pointsLayer =
+        MapLayer(dataSource: points, theme: MapTheme(color: Colors.black));
+    _controller.addLayer(pointsLayer);
   }
 
   @override

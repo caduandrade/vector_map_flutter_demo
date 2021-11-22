@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
+import 'package:vector_map_demo/example_with_debugger.dart';
+import 'package:vector_map_demo/geojson_asset.dart';
 
-import 'example_page.dart';
-
-class BrazilStatesPage extends StatefulWidget {
+class BrazilStatesExample extends ExampleWithDebugger {
   @override
-  BrazilStatesPageState createState() => BrazilStatesPageState();
+  Widget buildMainWidget(BuildContext context) => MainWidget(debugger);
 }
 
-class BrazilStatesPageState extends ExamplePageState {
+class MainWidget extends StatefulWidget {
+  const MainWidget(this.debugger);
+  final MapDebugger debugger;
+
   @override
-  bool isSized() {
-    return false;
+  MainWidgetState createState() => MainWidgetState();
+}
+
+class MainWidgetState extends State<MainWidget> {
+  late VectorMapController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VectorMapController(debugger: widget.debugger);
+    _loadGeoJson();
   }
 
-  @override
-  Future<DataSources> loadDataSources() async {
-    MapDataSource brazilStates = await MapDataSource.geoJSON(
-        geojson: brazilStatesGeoJSON, keys: ['REGIAO']);
+  void _loadGeoJson() async {
+    String geoJson = await GeoJsonAsset.brazilStates();
 
-    return DataSources(brazilStates: brazilStates);
-  }
-
-  @override
-  MapDebugger? buildDebugger() {
-    MapDebugger debugger = MapDebugger();
-    return debugger;
-  }
-
-  @override
-  Widget buildContent() {
+    MapDataSource dataSource =
+        await MapDataSource.geoJson(geoJson: geoJson, keys: ['REGIAO']);
     MapLayer layer = MapLayer(
-        dataSource: brazilStates,
+        dataSource: dataSource,
         theme:
             MapValueTheme(contourColor: Colors.black, key: 'REGIAO', colors: {
           'Centro-Oeste': Colors.blue,
@@ -41,9 +42,13 @@ class BrazilStatesPageState extends ExamplePageState {
           'Norte': Colors.yellow
         }),
         highlightTheme: MapHighlightTheme(color: Colors.grey[800]));
+    _controller.addLayer(layer);
+  }
 
-    VectorMap map = VectorMap(debugger: debugger, layers: [layer]);
-
-    return map;
+  @override
+  Widget build(BuildContext context) {
+    return VectorMap(
+        controller: _controller,
+        placeHolder: Center(child: Text('Loading...')));
   }
 }

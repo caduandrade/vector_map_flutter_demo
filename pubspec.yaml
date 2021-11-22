@@ -23,9 +23,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  multi_split_view: ^1.9.0
-  vector_map: 0.5.0
-    #path: ../vector_map_flutter
+  multi_split_view: ^1.10.0+1
+  demoflu: #^0.9.0
+    path: ../demoflu
+  vector_map: #0.5.0
+    path: ../vector_map_flutter
 
 dev_dependencies:
   flutter_test:
