@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
-import 'package:vector_map_demo/menu.dart';
-
-import 'example_page.dart';
 
 class GradientPage extends StatefulWidget {
   @override

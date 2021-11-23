@@ -10,6 +10,9 @@ import 'package:vector_map_demo/hover/contour.dart';
 import 'package:vector_map_demo/hover/enable_hover_by_value.dart';
 import 'package:vector_map_demo/hover/label.dart';
 import 'package:vector_map_demo/hover/listener.dart';
+import 'package:vector_map_demo/layers/layer_hover_off.dart';
+import 'package:vector_map_demo/layers/layer_hover_on.dart';
+import 'package:vector_map_demo/layers/multi_layer.dart';
 import 'package:vector_map_demo/lines.dart';
 import 'package:vector_map_demo/marker/circle/circle_marker.dart';
 import 'package:vector_map_demo/marker/circle/fixed_radius.dart';
@@ -87,6 +90,15 @@ void main() {
           MenuItem(
               name: 'Enabling hover by property value',
               builder: () => EnableHoverByValueExample(),
+              indentation: 2),
+          MenuItem(name: 'Layers', builder: () => MultiLayerExample()),
+          MenuItem(
+              name: 'Overlay on',
+              builder: () => LayerHoverOnExample(),
+              indentation: 2),
+          MenuItem(
+              name: 'Overlay off',
+              builder: () => LayerHoverOffExample(),
               indentation: 2),
           MenuItem(name: 'Marker', italic: true),
           MenuItem(
