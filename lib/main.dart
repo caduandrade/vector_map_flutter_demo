@@ -5,6 +5,8 @@ import 'package:vector_map_demo/brazil_states.dart';
 import 'package:vector_map_demo/click_listener.dart';
 import 'package:vector_map_demo/contour/contour_thickness.dart';
 import 'package:vector_map_demo/get_started.dart';
+import 'package:vector_map_demo/gradient/auto_min_max.dart';
+import 'package:vector_map_demo/gradient/min_max.dart';
 import 'package:vector_map_demo/hover/color.dart';
 import 'package:vector_map_demo/hover/contour.dart';
 import 'package:vector_map_demo/hover/enable_hover_by_value.dart';
@@ -60,6 +62,13 @@ void main() {
               name: 'Color by rule',
               builder: () => ColorByRuleExample(),
               indentation: 2),
+          MenuItem(name: 'Gradient', italic: true, indentation: 2),
+          MenuItem(
+              name: 'Auto min max',
+              builder: () => AutoMinMaxExample(),
+              indentation: 3),
+          MenuItem(
+              name: 'Min max', builder: () => MinMaxExample(), indentation: 3),
           MenuItem(name: 'Contour', italic: true),
           MenuItem(
               name: 'Thickness',
