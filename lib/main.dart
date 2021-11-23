@@ -27,6 +27,8 @@ import 'package:vector_map_demo/marker/circle/mapped_radius.dart';
 import 'package:vector_map_demo/marker/circle/property_radius.dart';
 import 'package:vector_map_demo/marker/circle/proportion_radius.dart';
 import 'package:vector_map_demo/contour/no_contour.dart';
+import 'package:vector_map_demo/mode/auto_fit.dart';
+import 'package:vector_map_demo/mode/pan_zoom.dart';
 import 'package:vector_map_demo/parser.dart';
 import 'package:vector_map_demo/theme/color_by_rule.dart';
 import 'package:vector_map_demo/theme/color_by_value.dart';
@@ -160,6 +162,15 @@ void main() {
               name: 'Click listener',
               builder: () => ClickListenerExample(),
               consoleEnabled: true),
+          MenuItem(name: 'Mode', italic: true),
+          MenuItem(
+              name: 'Pan and zoom',
+              builder: () => PanAndZoomExample(),
+              indentation: 2),
+          MenuItem(
+              name: 'Auto fit',
+              builder: () => AutoFitExample(),
+              indentation: 2),
           MenuItem(name: 'Brazil', italic: true),
           MenuItem(
               name: 'Counties',
