@@ -1,5 +1,10 @@
 import 'package:demoflu/demoflu.dart';
 import 'package:flutter/material.dart';
+import 'package:vector_map_demo/addons/legend/gradient/customization_legend.dart';
+import 'package:vector_map_demo/addons/legend/gradient/gradient_legend.dart';
+import 'package:vector_map_demo/addons/legend/gradient/highlight_contour_legend.dart';
+import 'package:vector_map_demo/addons/legend/gradient/highlight_fill_legend.dart';
+import 'package:vector_map_demo/addons/legend/gradient/legend_min_max.dart';
 import 'package:vector_map_demo/brazil_counties.dart';
 import 'package:vector_map_demo/brazil_states.dart';
 import 'package:vector_map_demo/click_listener.dart';
@@ -62,7 +67,6 @@ void main() {
               name: 'Color by rule',
               builder: () => ColorByRuleExample(),
               indentation: 2),
-          MenuItem(name: 'Gradient', italic: true, indentation: 2),
           MenuItem(
               name: 'Auto min max',
               builder: () => AutoMinMaxExample(),
@@ -130,6 +134,28 @@ void main() {
               name: 'Radius in proportion to property values',
               builder: () => ProportionRadiusExample(),
               indentation: 3),
+          MenuItem(name: 'Addons', italic: true),
+          MenuItem(name: 'Legend', italic: true, indentation: 2),
+          MenuItem(
+              name: 'Gradient',
+              builder: () => GradientLegendExample(),
+              indentation: 3),
+          MenuItem(
+              name: 'Min max',
+              builder: () => MinMaxLegendExample(),
+              indentation: 4),
+          MenuItem(
+              name: 'Highlight fill',
+              builder: () => HighlightFillLegendExample(),
+              indentation: 4),
+          MenuItem(
+              name: 'Highlight contour',
+              builder: () => HighlightContourLegendExample(),
+              indentation: 4),
+          MenuItem(
+              name: 'Customization',
+              builder: () => CustomizationLegendExample(),
+              indentation: 4),
           MenuItem(
               name: 'Click listener',
               builder: () => ClickListenerExample(),

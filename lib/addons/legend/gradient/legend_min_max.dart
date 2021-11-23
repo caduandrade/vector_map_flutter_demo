@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/geojson_asset.dart';
 
-class GradientLegendExample extends Example {
+class MinMaxLegendExample extends Example {
   @override
   Widget buildMainWidget(BuildContext context) => MainWidget();
 }
@@ -36,6 +36,8 @@ class MainWidgetState extends State<MainWidget> {
             contourColor: Colors.white,
             labelVisibility: (feature) => true,
             key: 'Gts',
+            min: 7500,
+            max: 25000,
             colors: [Colors.blue, Colors.yellow, Colors.red]));
     _controller.addLayer(layer);
     setState(() {

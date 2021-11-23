@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:vector_map/vector_map.dart';
 import 'package:vector_map_demo/geojson_asset.dart';
 
-class GradientLegendExample extends Example {
+class CustomizationLegendExample extends Example {
   @override
   Widget buildMainWidget(BuildContext context) => MainWidget();
 }
@@ -44,7 +44,13 @@ class MainWidgetState extends State<MainWidget> {
   }
 
   _buildAddons(MapLayer layer) {
-    _addons = [GradientLegend(layer: layer)];
+    _addons = [
+      GradientLegend(
+          layer: layer,
+          barBorder: Border.all(width: 2),
+          barHeight: 50,
+          barWidth: 30)
+    ];
   }
 
   @override
