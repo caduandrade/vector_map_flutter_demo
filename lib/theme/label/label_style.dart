@@ -26,10 +26,10 @@ class MainWidgetState extends State<MainWidget> {
   void _loadGeoJson() async {
     String geoJson = await GeoJsonAsset.polygons();
 
-    MapDataSource dataSource =
+    MapDataSource polygons =
         await MapDataSource.geoJson(geoJson: geoJson, labelKey: 'Name');
     MapLayer layer = MapLayer(
-        dataSource: dataSource,
+        dataSource: polygons,
         theme: MapTheme(
             labelVisibility: (feature) => true,
             labelStyleBuilder: (feature, featureColor, labelColor) {

@@ -16,6 +16,8 @@ class MainWidget extends StatefulWidget {
 class MainWidgetState extends State<MainWidget> {
   VectorMapController _controller = VectorMapController();
 
+  MapDataSource? polygons;
+
   @override
   void initState() {
     super.initState();
